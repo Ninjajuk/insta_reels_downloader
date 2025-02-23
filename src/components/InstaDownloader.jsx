@@ -57,8 +57,8 @@ const InstagramDownloader = () => {
   return (
     <>
       <nav className="w-full bg-gray-800 p-4 shadow-md flex items-center justify-between">
-        <a href="/" className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 cursor-pointer">
-          NinjKing
+        <a href="/" className="bg-blue-500 text-white font-bold px-4 py-2 rounded-md hover:bg-blue-600 cursor-pointer">
+          NinjaKing
         </a>
         <h1 className="text-xl font-semibold text-white flex-grow text-center">Instagram Downloader</h1>
         <div className="w-24"></div>
