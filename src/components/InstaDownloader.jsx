@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 
 const tabs = ["Video", "Photo", "Story", "Reel", "IGTV"];
-const BASE_URL = 'http://127.0.0.1:5000/download'
+const BASE_URL = 'http://127.0.0.1:5000/download';
 const InstagramDownloader = () => {
   const [url, setUrl] = useState("");
   const [activeTab, setActiveTab] = useState("Video");
   const [error, setError] = useState('');
   const [downloadLink, setDownloadLink] = useState('');
-
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (downloadLink) {
@@ -17,28 +17,38 @@ const InstagramDownloader = () => {
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
+      setLoading(false);
     }
   }, [downloadLink]);
 
   const handleDownload = async () => {
     setError('');
     setDownloadLink('');
-    console.log(url)
-    if (!url) return setError('Instagram URL is required')
+    setLoading(true);
+    console.log(url);
+    if (!url) {
+      setError('Instagram URL is required');
+      setLoading(false);
+      return;
+    }
     try {
-      const response = await fetch(
-        `${BASE_URL}?url=${encodeURIComponent(url)}`
-      );
+      const response = await fetch(`${BASE_URL}?url=${encodeURIComponent(url)}`);
       const data = await response.json();
-      console.log(data)
-      if (!response.ok) return setError(data.error || "Failed to fetch the download link.")
+      console.log(data);
+      if (!response.ok) {
+        setError(data.error || "Failed to fetch the download link.");
+        setLoading(false);
+        return;
+      }
       if (data.downloadLink) {
         setDownloadLink(data.downloadLink);
       } else {
-        setError('Please check the URL.Unable to fetch the video. ');
+        setError('Please check the URL. Unable to fetch the video.');
+        setLoading(false);
       }
     } catch (err) {
       setError('An error occurred while trying to download the video.');
+      setLoading(false);
     }
   };
 
@@ -47,9 +57,9 @@ const InstagramDownloader = () => {
       <nav className="w-full bg-gray-800 p-4 shadow-md">
         <h1 className="text-xl font-semibold text-white ">Instagram Downloader</h1>
       </nav>
-      <main className="min-h-screen flex items-center justify-center bg-gray-900 text-white  p-4">
-        <section className="max-w-2xl  p-4 bg-purple-800 rounded-md shdaow-lg">
-          <h1 className="text-2xl lg:text-4xl  font-bold mt-10">Download Instagram {activeTab}</h1>
+      <main className="min-h-screen flex items-center justify-center bg-gray-900 text-white p-4">
+        <section className="max-w-2xl p-4 bg-purple-800 rounded-md shadow-lg">
+          <h1 className="text-2xl lg:text-4xl font-bold mt-10">Download Instagram {activeTab}</h1>
           <p className="text-sm lg:text-md text-gray-400 mb-4 pt-2">Easily download Instagram {activeTab} online</p>
 
           <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mt-4 border-b border-gray-700 pb-4">
@@ -77,9 +87,10 @@ const InstagramDownloader = () => {
 
           <button
             onClick={handleDownload}
-            className="mt-4 bg-green-500 hover:bg-green-600 px-6 py-2 rounded-lg text-white text-lg shadow-md cursor-pointer"
+            disabled={loading}
+            className={`mt-4 px-6 py-2 rounded-lg text-white text-lg shadow-md cursor-pointer ${loading ? "bg-gray-500 cursor-not-allowed" : "bg-green-500 hover:bg-green-600"}`}
           >
-            {downloadLink ? ` Download ${activeTab}` : `Generate Link for ${activeTab}`}
+            {loading ? "Loading..." : downloadLink ? ` Download ${activeTab}` : `Generate Link for ${activeTab}`}
           </button>
 
           {/* Placeholder for Ads */}
@@ -87,11 +98,8 @@ const InstagramDownloader = () => {
             <p className="text-gray-400">Ad Space</p>
           </div>
         </section>
-
-
       </main>
     </>
-
   );
 };
 
