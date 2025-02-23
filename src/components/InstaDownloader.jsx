@@ -1,7 +1,16 @@
 import React, { useEffect, useState } from "react";
 
-const tabs = ["Video", "Photo", "Story", "Reel", "IGTV"];
+const tabs = ["Video", "DP", "Story", "Reel", "IGTV"];
 const BASE_URL = 'http://127.0.0.1:5000/download';
+
+const BASE_URLS = {
+  Video: "http://127.0.0.1:5000/download",
+  DP: "http://127.0.0.1:5000/download/dp",
+  Story: "http://127.0.0.1:5000/download/stories",
+  Reel: "http://127.0.0.1:5000/download",
+  IGTV: "http://127.0.0.1:5000/download/igtv",
+};
+
 const InstagramDownloader = () => {
   const [url, setUrl] = useState("");
   const [activeTab, setActiveTab] = useState("Video");
@@ -34,7 +43,13 @@ const InstagramDownloader = () => {
       return;
     }
     try {
-      const response = await fetch(`${BASE_URL}?url=${encodeURIComponent(url)}`);
+      let endpoint = BASE_URLS[activeTab]
+
+      let fetchUrl = activeTab === "DP"
+        ? `${endpoint}?username=${encodeURIComponent(url)}`
+        : `${endpoint}?url=${encodeURIComponent(url)}`;
+
+      const response = await fetch(fetchUrl);
       const data = await response.json();
       console.log(data);
       if (!response.ok) {
@@ -42,9 +57,9 @@ const InstagramDownloader = () => {
         setLoading(false);
         return;
       }
-      if (data.downloadLink) {
-        setDownloadLink(data.downloadLink);
-      } else {
+      if (data.downloadLink) return setDownloadLink(data.downloadLink);
+      if (data.dpUrl) return setDownloadLink(data.dpUrl);
+       else {
         setError('Please check the URL. Unable to fetch the video.');
         setLoading(false);
       }
@@ -56,23 +71,21 @@ const InstagramDownloader = () => {
 
   return (
     <>
-      <nav className="w-full bg-gray-800 p-4 shadow-md flex items-center justify-between">
-        <a href="/" className="bg-blue-500 text-white font-bold px-4 py-2 rounded-md hover:bg-blue-600 cursor-pointer">
-          NinjaKing
-        </a>
-        <h1 className="text-xl font-semibold text-white flex-grow text-center">Instagram Downloader</h1>
-        <div className="w-24"></div>
-      </nav>
+
       <main className="min-h-screen flex items-center justify-center bg-gray-900 text-white p-4">
         <section className="max-w-2xl p-4 bg-purple-800 rounded-md shadow-lg">
-          <h1 className="text-2xl lg:text-4xl font-bold mt-10">Download Instagram {activeTab}</h1>
-          <p className="text-sm lg:text-md text-gray-400 mb-4 pt-2">Easily download Instagram {activeTab} online</p>
+          <h1 className="text-2xl lg:text-4xl font-bold mt-10">Download Instagram Trending Videos</h1>
+          <p className="text-sm lg:text-md text-gray-400 mb-4 pt-2">Easily download Instagram <span className="font-semibold text-lg text-white">{activeTab}</span> online</p>
 
           <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mt-4 border-b border-gray-700 pb-4">
             {tabs.map((tab) => (
               <button
                 key={tab}
-                onClick={() => setActiveTab(tab)}
+                onClick={() => {
+                  setActiveTab(tab);
+                  setDownloadLink(""); // Reset download link on tab change
+                  setError(""); // Reset error on tab change
+                }}
                 className={`px-6 py-2 rounded-lg transition-all cursor-pointer ${activeTab === tab ? "bg-blue-500 text-white" : "bg-gray-700 text-gray-300 hover:bg-gray-600"}`}
               >
                 {tab}
@@ -84,12 +97,12 @@ const InstagramDownloader = () => {
             <input
               type="text"
               className="w-full p-3 rounded-lg border border-gray-600 bg-gray-800 text-white focus:border-blue-500"
-              placeholder="Paste Instagram URL here..."
+              placeholder={activeTab === "DP" ? "Enter Instagram Username..." : "Paste Instagram URL here..."}
               value={url}
               onChange={(e) => setUrl(e.target.value)}
             />
           </div>
-          {error && <p className="mt-2 text-red-500 font-bold">{error}</p>}
+          {error && <p className="mt-2 text-red-500 font-bold">try again {error} </p>}
 
           <button
             onClick={handleDownload}
@@ -100,7 +113,7 @@ const InstagramDownloader = () => {
           </button>
 
           {/* Placeholder for Ads */}
-          <div className="mt-10 w-full max-w-lg h-32 bg-gray-700 flex items-center justify-center rounded-lg border border-gray-600 shadow-md">
+          <div className="mt-10 w-full  h-32 bg-gray-700 flex items-center justify-center rounded-lg border border-gray-600 shadow-md">
             <p className="text-gray-400">Ad Space</p>
           </div>
         </section>
