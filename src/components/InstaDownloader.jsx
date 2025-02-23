@@ -1,60 +1,97 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const tabs = ["Video", "Photo", "Story", "Reel", "IGTV"];
-
+const BASE_URL = 'http://127.0.0.1:5000/download'
 const InstagramDownloader = () => {
   const [url, setUrl] = useState("");
   const [activeTab, setActiveTab] = useState("Video");
+  const [error, setError] = useState('');
+  const [downloadLink, setDownloadLink] = useState('');
 
-  const handleDownload = () => {
-    if (!url) return alert("Please enter a valid Instagram URL");
-    alert(`Downloading ${activeTab} from ${url}`);
-    // Implement API call here
+
+  useEffect(() => {
+    if (downloadLink) {
+      const link = document.createElement("a");
+      link.href = downloadLink;
+      link.setAttribute("download", "instagram_download.mp4"); // Set filename (optional)
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  }, [downloadLink]);
+
+  const handleDownload = async () => {
+    setError('');
+    setDownloadLink('');
+    console.log(url)
+    if (!url) return setError('Instagram URL is required')
+    try {
+      const response = await fetch(
+        `${BASE_URL}?url=${encodeURIComponent(url)}`
+      );
+      const data = await response.json();
+      console.log(data)
+      if (!response.ok) return setError(data.error || "Failed to fetch the download link.")
+      if (data.downloadLink) {
+        setDownloadLink(data.downloadLink);
+      } else {
+        setError('Please check the URL.Unable to fetch the video. ');
+      }
+    } catch (err) {
+      setError('An error occurred while trying to download the video.');
+    }
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center p-4">
-      {/* Navbar */}
-      <nav className="w-full bg-gray-800 p-4 flex justify-center shadow-md">
-        <h1 className="text-xl font-semibold">Instagram Downloader</h1>
+    <>
+      <nav className="w-full bg-gray-800 p-4 shadow-md">
+        <h1 className="text-xl font-semibold text-white ">Instagram Downloader</h1>
       </nav>
-      
-      <h1 className="text-4xl font-bold mt-10">Download Instagram {activeTab}</h1>
-      <p className="text-gray-400 mb-4">Easily download Instagram {activeTab} online</p>
+      <main className="min-h-screen flex items-center justify-center bg-gray-900 text-white  p-4">
+        <section className="max-w-2xl  p-4 bg-purple-800 rounded-md shdaow-lg">
+          <h1 className="text-2xl lg:text-4xl  font-bold mt-10">Download Instagram {activeTab}</h1>
+          <p className="text-sm lg:text-md text-gray-400 mb-4 pt-2">Easily download Instagram {activeTab} online</p>
 
-      <div className="flex gap-4 mt-4 border-b border-gray-700 pb-4">
-        {tabs.map((tab) => (
-          <button 
-            key={tab} 
-            onClick={() => setActiveTab(tab)} 
-            className={`px-6 py-2 rounded-lg transition-all ${activeTab === tab ? "bg-blue-500 text-white" : "bg-gray-700 text-gray-300 hover:bg-gray-600"}`}
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mt-4 border-b border-gray-700 pb-4">
+            {tabs.map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`px-6 py-2 rounded-lg transition-all cursor-pointer ${activeTab === tab ? "bg-blue-500 text-white" : "bg-gray-700 text-gray-300 hover:bg-gray-600"}`}
+              >
+                {tab}
+              </button>
+            ))}
+          </div>
+
+          <div className="mt-6 w-full max-w-lg ">
+            <input
+              type="text"
+              className="w-full p-3 rounded-lg border border-gray-600 bg-gray-800 text-white focus:border-blue-500"
+              placeholder="Paste Instagram URL here..."
+              value={url}
+              onChange={(e) => setUrl(e.target.value)}
+            />
+          </div>
+          {error && <p className="mt-2 text-red-500 font-bold">{error}</p>}
+
+          <button
+            onClick={handleDownload}
+            className="mt-4 bg-green-500 hover:bg-green-600 px-6 py-2 rounded-lg text-white text-lg shadow-md cursor-pointer"
           >
-            {tab}
+            {downloadLink ? ` Download ${activeTab}` : `Generate Link for ${activeTab}`}
           </button>
-        ))}
-      </div>
 
-      <div className="mt-6 w-full max-w-lg">
-        <input
-          type="text"
-          className="w-full p-3 rounded-lg border border-gray-600 bg-gray-800 text-white focus:border-blue-500"
-          placeholder="Paste Instagram URL here..."
-          value={url}
-          onChange={(e) => setUrl(e.target.value)}
-        />
-      </div>
+          {/* Placeholder for Ads */}
+          <div className="mt-10 w-full max-w-lg h-32 bg-gray-700 flex items-center justify-center rounded-lg border border-gray-600 shadow-md">
+            <p className="text-gray-400">Ad Space</p>
+          </div>
+        </section>
 
-      <button 
-        onClick={handleDownload} 
-        className="mt-4 bg-green-500 hover:bg-green-600 px-6 py-2 rounded-lg text-white text-lg shadow-md">
-        Download {activeTab}
-      </button>
 
-      {/* Placeholder for Ads */}
-      <div className="mt-10 w-full max-w-lg h-32 bg-gray-700 flex items-center justify-center rounded-lg border border-gray-600 shadow-md">
-        <p className="text-gray-400">Ad Space</p>
-      </div>
-    </div>
+      </main>
+    </>
+
   );
 };
 
