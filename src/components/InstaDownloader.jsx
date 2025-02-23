@@ -7,7 +7,9 @@ const InstagramDownloader = () => {
   const [activeTab, setActiveTab] = useState("Video");
   const [error, setError] = useState('');
   const [downloadLink, setDownloadLink] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false)
+
+
 
   useEffect(() => {
     if (downloadLink) {
@@ -54,8 +56,12 @@ const InstagramDownloader = () => {
 
   return (
     <>
-      <nav className="w-full bg-gray-800 p-4 shadow-md">
-        <h1 className="text-xl font-semibold text-white ">Instagram Downloader</h1>
+      <nav className="w-full bg-gray-800 p-4 shadow-md flex items-center justify-between">
+        <a href="/" className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 cursor-pointer">
+          NinjKing
+        </a>
+        <h1 className="text-xl font-semibold text-white flex-grow text-center">Instagram Downloader</h1>
+        <div className="w-24"></div>
       </nav>
       <main className="min-h-screen flex items-center justify-center bg-gray-900 text-white p-4">
         <section className="max-w-2xl p-4 bg-purple-800 rounded-md shadow-lg">
