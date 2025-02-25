@@ -1,1 +1,9 @@
 @import "tailwindcss";
+
+
+.glass {
+    @apply bg-white/80 dark:bg-black/50 backdrop-blur-lg border border-white/20 dark:border-white/10 shadow-lg;
+  }
+  .ad-container {
+    @apply fixed top-20 bottom-0 w-64 p-4 hidden xl:block;
+  }
