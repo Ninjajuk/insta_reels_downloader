@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import AdComponent from "./AdComponent";
+import AdSenseComponent from "./AdSenseGoogle";
 
 const tabs = ["Video", "DP", "Story", "Reel", "IGTV"];
 const BASE_URL = 'http://127.0.0.1:5000/download';
@@ -74,8 +75,15 @@ const InstagramDownloader = () => {
     <>
 
       <main className="min-h-screen p-2 flex flex-col lg:flex-row gap-2  items-center justify-center bg-gray-900 text-white ">
-        {/* Left Ad */}
-        <AdComponent position="left" />
+        {/* Left Ad vertical */}
+        {/* <AdComponent position="left" /> */}
+        <div className="w-full lg:w-64 h-64 lg:min-h-screen">
+          <AdSenseComponent
+            adClient='ca-pub-3193442524605948'
+            adSlot='9310001507'
+          />
+        </div>
+
         <main className="flex-1 flex items-center justify-center">
           <section className="w-full max-w-7xl mx-auto p-4 bg-purple-800 rounded-md shadow-lg">
             <h1 className="text-2xl lg:text-4xl font-bold mt-10">Download Instagram Trending Videos</h1>
@@ -116,15 +124,26 @@ const InstagramDownloader = () => {
               {loading ? "Loading..." : downloadLink ? ` Download ${activeTab}` : `Generate Link for ${activeTab}`}
             </button>
 
-            {/* Placeholder for Ads */}
-            <div className="mt-10 w-full  h-32 bg-gray-700 flex items-center justify-center rounded-lg border border-gray-600 shadow-md">
+            {/* Placeholder for horizontal Ads */}
+            <div className="mt-10 w-full  h-32 flex items-center justify-center rounded-lg ">
               {/* <p className="text-gray-400">Ad Space</p> */}
+              <AdSenseComponent
+                adClient='ca-pub-3193442524605948'
+                adSlot='7096807683'
+              />
             </div>
           </section>
         </main>
 
         {/* Left Ad */}
-        <AdComponent position="right" />
+        {/* <AdComponent position="right" /> */}
+        <div className="w-full lg:w-64 h-64 lg:min-h-screen">
+          <AdSenseComponent
+            adClient='ca-pub-3193442524605948'
+            adSlot='9310001507'
+          />
+        </div>
+
       </main>
     </>
   );

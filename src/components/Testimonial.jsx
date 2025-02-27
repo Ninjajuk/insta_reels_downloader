@@ -1,4 +1,5 @@
 import React from 'react'
+import AdSenseComponent from './AdSenseGoogle'
 
 const Testimonial = () => {
     const comments =[
@@ -10,9 +11,13 @@ const Testimonial = () => {
     return (
         <section className="py-12 bg-white relative flex flex-col items-center">
             <div className="container mx-auto px-4 flex flex-col lg:flex-row">
-                {/* Left Ad */}
-                <div className="hidden lg:flex w-1/5 bg-gray-100 p-4 rounded-lg shadow-lg text-center">
+                {/*square Left Ad */}
+                <div className="hidden lg:flex w-1/5 p-4 text-center">
                     {/* <p className="text-gray-600">Left Ad</p> */}
+                    <AdSenseComponent
+                adClient='ca-pub-3193442524605948'
+                adSlot='5179184800'
+              />
                 </div>
                 
                 {/* Main Content */}
@@ -36,14 +41,22 @@ const Testimonial = () => {
                 </div>
                 
                 {/* Right Ad */}
-                <div className="hidden lg:flex w-1/5 bg-gray-100 p-4 rounded-lg shadow-lg text-center">
+                <div className="hidden lg:flex w-1/5  p-4  text-center">
                     {/* <p className="text-gray-600">Right Ad</p> */}
+                    <AdSenseComponent
+                        adClient='ca-pub-3193442524605948'
+                        adSlot='5179184800'
+                    />
                 </div>
             </div>
             
             {/* Bottom Full-Width Ad */}
-            <div className="mt-4 w-full h-64 bg-gray-100 p-4 rounded-lg shadow-lg text-center">
+            <div className="mt-4 w-full h-64  p-4  text-center">
                 {/* <p className="text-gray-600">Bottom Full-Width Ad</p> */}
+                <AdSenseComponent
+                adClient='ca-pub-3193442524605948'
+                adSlot='7096807683'
+              />
             </div>
         </section>
     )
