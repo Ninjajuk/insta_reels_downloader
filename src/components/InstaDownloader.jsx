@@ -77,12 +77,10 @@ const InstagramDownloader = () => {
       <main className="min-h-screen p-2 flex flex-col lg:flex-row gap-2  items-center justify-center bg-gray-900 text-white ">
         {/* Left Ad vertical */}
         {/* <AdComponent position="left" /> */}
-        <div className="w-full lg:w-64 h-64 lg:min-h-screen">
-          <AdSenseComponent
-            adClient='ca-pub-3193442524605948'
-            adSlot='9310001507'
-          />
+        <div key={activeTab} className="w-full lg:w-64 h-64 lg:min-h-screen">
+          <AdSenseComponent adClient="ca-pub-3193442524605948" adSlot="9310001507" />
         </div>
+
 
         <main className="flex-1 flex items-center justify-center">
           <section className="w-full max-w-7xl mx-auto p-4 bg-purple-800 rounded-md shadow-lg">
