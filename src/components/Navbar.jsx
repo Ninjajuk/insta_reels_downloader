@@ -33,13 +33,20 @@ const Navbar = () => {
 //       </div>
 //     </div>
 //   </nav>
-<nav className="w-full bg-gray-800 p-4 shadow-md flex items-center justify-between sticky top-0 z-10">
-        <a href="/" className="bg-purple-600 text-white font-bold px-4 py-2 rounded-md hover:bg-purple-800 cursor-pointer">
-          InstaNinja
-        </a>
-        <h1 className="hidden lg:block text-xl font-semibold text-white flex-grow text-center">Instagram Downloader</h1>
-        <div className="w-24"></div>
-      </nav> 
+    <nav className="w-full bg-gray-800 p-4 shadow-md flex gap-2 items-center justify-between sticky top-0 z-10">
+      <a href="/" className="bg-purple-600 text-white font-bold px-2 py-2 rounded-md hover:bg-purple-800 cursor-pointer">
+        InstaNinja
+      </a>
+
+      <h1 className="hidden lg:block text-xl font-semibold text-white flex-grow text-center">Instagram Downloader</h1>
+      <ul className='text-white flex gap-2 items-center space-x-0.5 lg:space-x-4 cursor-pointer'>
+        <li>Home</li>
+        <li>Download</li>
+        <li>Video</li>
+        <li>Reels</li>
+      </ul>
+      <div className="w-24"></div>
+    </nav> 
   )
 }
 

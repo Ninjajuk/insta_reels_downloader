@@ -74,7 +74,7 @@ const InstagramDownloader = () => {
   return (
     <>
 
-      <main className="min-h-screen p-2 flex flex-col lg:flex-row gap-2  items-center justify-center bg-gray-900 text-white ">
+      <main className="min-h-screen p-2 flex flex-col lg:flex-row gap-2  items-center justify-center bg-gray-50 text-white ">
         {/* Left Ad vertical */}
         {/* <AdComponent position="left" /> */}
         <div key={activeTab} className="w-full lg:w-64 h-64 lg:min-h-screen">

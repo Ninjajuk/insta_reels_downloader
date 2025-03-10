@@ -7,3 +7,6 @@
   .ad-container {
     @apply fixed top-20 bottom-0 w-64 p-4 hidden xl:block;
   }
+  @theme{
+    --color-primary:oklch(0.496 0.265 301.924)
+  }

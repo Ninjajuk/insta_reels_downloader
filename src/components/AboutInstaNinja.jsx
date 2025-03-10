@@ -19,7 +19,7 @@ const AboutInstaninja = () => {
       {/* Image Section */}
       <div className="md:w-1/2 flex justify-center">
         <img
-          src="/your-image-path.jpg"
+          src="/images/instaprofile.png"
           alt="Instagram Profile on Phone"
           className="rounded-lg shadow-lg max-w-full h-auto md:max-w-md"
         />
