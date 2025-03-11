@@ -11,7 +11,7 @@ const AdSenseComponent = ({ adClient, adSlot }) => {
         console.error("Google Ads Error:", e);
       }
     }
-  }, []); // Run only once
+  }, []);
 
   return (
     <ins

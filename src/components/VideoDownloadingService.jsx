@@ -28,7 +28,7 @@ const VideoDownloadingService = () => {
                 {videoreels.map((item, index) => (
                     <div key={index} className=''>
                         <div className='w-full h-52 '>
-                            < img src={item.imgUrl} alt={item.title} className='w-full h-full object-cover rounded-md' />
+                            < img src={item.imgUrl} loading="lazy" alt={item.title} className='w-full h-full object-cover rounded-md' />
                         </div>
 
                         <div className='mt-4'>

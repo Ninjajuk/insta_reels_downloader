@@ -39,12 +39,12 @@ const Navbar = () => {
       </a>
 
       <h1 className="hidden lg:block text-xl font-semibold text-white flex-grow text-center">Instagram Downloader</h1>
-      <ul className='text-white flex gap-2 items-center space-x-0.5 lg:space-x-4 cursor-pointer'>
+      {/* <ul className='text-white flex gap-2 items-center space-x-0.5 lg:space-x-4 cursor-pointer'>
         <li>Home</li>
         <li>Download</li>
         <li>Video</li>
         <li>Reels</li>
-      </ul>
+      </ul> */}
       <div className="w-24"></div>
     </nav> 
   )

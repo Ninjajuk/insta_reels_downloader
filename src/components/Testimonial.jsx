@@ -49,13 +49,12 @@ const Testimonial = () => {
             </div>
             
             {/* Bottom Full-Width Ad */}
-            <div className="mt-4 w-full h-64  p-4  text-center">
-                {/* <p className="text-gray-600">Bottom Full-Width Ad</p> */}
+            {/* <div className="mt-4 w-full h-64  p-4  text-center">
                 <AdSenseComponent
                 adClient='ca-pub-3193442524605948'
                 adSlot='7096807683'
               />
-            </div>
+            </div> */}
         </section>
     )
 }

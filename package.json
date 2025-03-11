@@ -1,7 +1,7 @@
 {
   "name": "instareels-download",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -14,6 +14,8 @@
     "lucide-react": "^0.479.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-ga4": "^2.1.0",
+    "react-helmet": "^6.1.0",
     "react-router-dom": "^7.2.0",
     "tailwindcss": "^4.0.8"
   },
