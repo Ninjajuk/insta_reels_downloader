@@ -2,7 +2,7 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <footer className="py-8 bg-gray-900 text-white">
+    <footer className="py-8 bg-purple-800 text-white">
     <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
       <div className="text-center md:text-left">
         <p className="text-lg font-semibold">InstaDownloader</p>

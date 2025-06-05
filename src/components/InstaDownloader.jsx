@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import AdComponent from "./AdComponent";
 import AdSenseComponent from "./AdSenseGoogle";
 
-const tabs = ["Video", "DP", "Story", "Reel", "IGTV"];
-const BASE_URL = 'http://127.0.0.1:5000/download';
+const tabs = ["Video", "DP", "Story", "Reel"];
+// const BASE_URL = 'http://127.0.0.1:5000/download';
 
 const BASE_URLS = {
-  Video: "http://127.0.0.1:5000/download",
-  DP: "http://127.0.0.1:5000/download/dp",
+  Video: "https://instareels-backend-python.onrender.com/download",
+  DP: "https://instareels-backend-python.onrender.com/download/dp",
   Story: "http://127.0.0.1:5000/download/stories",
   Reel: "http://127.0.0.1:5000/download",
   IGTV: "http://127.0.0.1:5000/download/igtv",
@@ -83,9 +83,9 @@ const InstagramDownloader = () => {
 
 
         <main className="flex-1 flex items-center justify-center">
-          <section className="w-full max-w-7xl mx-auto p-4 bg-purple-800 rounded-md shadow-lg">
-            <h1 className="text-2xl lg:text-4xl font-bold mt-10">Download Instagram Trending Videos</h1>
-            <p className="text-sm lg:text-md text-gray-400 mb-4 pt-2">Easily download Instagram <span className="font-semibold text-lg text-white">{activeTab}</span> online</p>
+          <section className="w-full max-w-7xl mx-auto p-4 bg-purple-800 rounded-md shadow-lg flex flex-col items-center">
+            <h1 className="text-2xl lg:text-4xl font-bold mt-10 text-center">Download Instagram Trending Videos</h1>
+            <p className="text-md lg:text-lg text-gray-400 py-4">Easily download Instagram <span className="font-semibold text-lg text-white">{activeTab}</span> online</p>
 
             <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mt-4 border-b border-gray-700 pb-4">
               {tabs.map((tab) => (
@@ -103,10 +103,10 @@ const InstagramDownloader = () => {
               ))}
             </div>
 
-            <div className="mt-6 w-full max-w-lg ">
+            <div className="mt-6 w-full max-w-lg  ">
               <input
                 type="text"
-                className="w-full p-3 rounded-lg border border-gray-600 bg-gray-800 text-white focus:border-blue-500"
+                className="w-full p-3 rounded-lg  bg-white text-gray-800 focus:border-blue-500"
                 placeholder={activeTab === "DP" ? "Enter Instagram Username..." : "Paste Instagram URL here..."}
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
@@ -117,7 +117,7 @@ const InstagramDownloader = () => {
             <button
               onClick={handleDownload}
               disabled={loading}
-              className={`mt-4 px-6 py-2 rounded-lg text-white text-lg shadow-md cursor-pointer ${loading ? "bg-gray-500 cursor-not-allowed" : "bg-green-500 hover:bg-green-600"}`}
+              className={`mt-6 px-6 py-2 rounded-lg text-white text-lg shadow-md cursor-pointer ${loading ? "bg-gray-500 cursor-not-allowed" : "bg-green-500 hover:bg-green-600"}`}
             >
               {loading ? "Loading..." : downloadLink ? ` Download ${activeTab}` : `Generate Link for ${activeTab}`}
             </button>

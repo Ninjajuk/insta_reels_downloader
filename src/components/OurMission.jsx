@@ -13,7 +13,7 @@ const OurMission = () => {
             </div>
             {/* Text Section */}
             <div className="md:w-1/2 text-center md:text-left">
-                <h2 className="text-3xl font-bold text-gray-900">Our Mission</h2>
+                <h2 className="text-3xl font-bold text-purple-800">Our Mission</h2>
                 <p className="text-gray-600 mt-4">
                     At Instaninja, we aim to empower users by offering a reliable platform for donloading Instagram Videos and reels, enhancing your social media experience effortlessly.
                 </p>

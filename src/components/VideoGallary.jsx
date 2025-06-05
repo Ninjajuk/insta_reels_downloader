@@ -32,7 +32,7 @@ const VideoGallary = () => {
     ]
     return (
         <section className='max-w-6xl mx-auto px-4 py-12 '>
-            <h1 className='text-xl lg:text-5xl text-gray-900 font-extrabold  text-center pb-4'>Video Gallary</h1>
+            <h1 className='text-xl lg:text-5xl text-purple-800 font-extrabold  text-center pb-4'>Video Gallary</h1>
             <p className='text-gray-600 text-sm pb-8 text-center'>Explore our collections of Instagram reels and videos downloads</p>
             <div className=' grid grid-cols-1 gap-4  md:grid-cols-2 lg:grid-cols-3'>
                 {videogallary.map((item, index) => (

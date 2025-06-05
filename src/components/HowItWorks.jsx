@@ -6,7 +6,7 @@ const HowItWorks = () => {
   return (
     // <section className="py-12 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white">
     <section className=" max-w-6xl mx-auto px-4 py-12">
-      <h2 className="text-3xl lg:text-5xl font-extrabold text-center mb-8 text-gray-900">How It Works</h2>
+      <h2 className="text-3xl lg:text-5xl font-extrabold text-center mb-8 text-purple-800">How It Works</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 px-2">
         {/* Ad Placement for square */}

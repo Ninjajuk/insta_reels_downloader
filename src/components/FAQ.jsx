@@ -20,7 +20,7 @@ const FAQ = () => {
 
   return (
     <section className="mt-8 w-full max-w-3xl mx-auto">
-      <h2 className="text-xl font-semibold  text-center">Frequently Asked Questions</h2>
+      <h2 className="text-xl font-bold  text-center text-purple-800">Frequently Asked Questions</h2>
       <div className="mt-4">
         {faqs.map((faq, index) => (
           <div key={index} className="border-b border-gray-700">

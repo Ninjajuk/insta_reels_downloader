@@ -33,8 +33,8 @@ const Navbar = () => {
 //       </div>
 //     </div>
 //   </nav>
-    <nav className="w-full bg-gray-800 p-4 shadow-md flex gap-2 items-center justify-between sticky top-0 z-10">
-      <a href="/" className="bg-purple-600 text-white font-bold px-2 py-2 rounded-md hover:bg-purple-800 cursor-pointer">
+    <nav className="w-full bg-purple-800 p-4 shadow-md flex gap-2 items-center justify-between sticky top-0 z-10">
+      <a href="/" className="bg-purple-600 text-white font-bold px-2 py-2 rounded-md  cursor-pointer">
         InstaNinja
       </a>
 
