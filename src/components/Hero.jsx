@@ -1,3 +1,4 @@
+import { ChevronRight } from "lucide-react";
 
 
 
@@ -12,7 +13,7 @@ const HeroSection = () => {
         Easily download Instagram reels, videos, DPs,  all in one place.
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <button size="lg" className="p-2  text-white bg-purple-700 rounded-full cursor-pointer">
+          <button size="lg" className="p-4  text-white bg-purple-700 rounded-full cursor-pointer">
             Download Reels
             {/* <ChevronRight className="ml-2 h-4 w-4" /> */}
           </button>
