@@ -7,10 +7,11 @@ const tabs = ["Video", "DP", "Story", "Reel"];
 
 const BASE_URLS = {
   Video: "https://instareels-backend-python.onrender.com/download",
+  // DP: "http://127.0.0.1:5000/download/dp",
   DP: "https://instareels-backend-python.onrender.com/download/dp",
   Story: "http://127.0.0.1:5000/download/stories",
-  Reel: "http://127.0.0.1:5000/download",
-  IGTV: "http://127.0.0.1:5000/download/igtv",
+  Reel: "https://instareels-backend-python.onrender.com/download",
+  // IGTV: "http://127.0.0.1:5000/download/igtv",
 };
 
 const InstagramDownloader = () => {

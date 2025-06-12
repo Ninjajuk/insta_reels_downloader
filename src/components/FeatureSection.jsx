@@ -23,7 +23,7 @@ const FeaturesSection = () => {
   return (
     <section className="py-16 bg-accent/50">
       <div className="max-w-7xl mx-auto ">
-        <h2 className="text-3xl font-bold font-jakarta mb-12 text-center">Why Choose ExamNinja?</h2>
+        <h2 className="text-3xl font-bold font-jakarta mb-12 text-center text-purple-800">Why Choose ExamNinja?</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {features.map((feature) => (
             <div key={feature.title} className="text-center p-6 rounded-lg hover:bg-background transition-colors">

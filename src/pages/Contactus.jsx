@@ -10,9 +10,10 @@ const ContactUs = () => {
         </p>
 
         <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
+          <a href="mailto:biosamsuddin@gmail.com" className="underline"></a>
           <h2 className="text-xl font-semibold text-purple-400">Email</h2>
           <p className="text-gray-300">
-            📩 <a href="mailto:support@snapinsta.fun" className="underline">support@snapinsta.fun</a>
+            📩 <a href="mailto:biosamsuddin@gmail.com" className="underline">support@snapinsta.fun</a>
           </p>
 
           <h2 className="text-xl font-semibold mt-6 text-purple-400">Social Media</h2>

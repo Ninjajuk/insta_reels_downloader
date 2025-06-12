@@ -12,12 +12,12 @@ const HeroSection = () => {
         <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-8">
         Easily download Instagram reels, videos, DPs,  all in one place.
         </p>
-        <div className="flex flex-col sm:flex-row justify-center gap-4">
+        {/* <div className="flex flex-col sm:flex-row justify-center gap-4">
           <button size="lg" className="p-4  text-white bg-purple-700 rounded-full cursor-pointer">
             Download Reels
-            {/* <ChevronRight className="ml-2 h-4 w-4" /> */}
+            <ChevronRight className="ml-2 h-4 w-4" />
           </button>
-        </div>
+        </div> */}
       </div>
     </section>
   );
